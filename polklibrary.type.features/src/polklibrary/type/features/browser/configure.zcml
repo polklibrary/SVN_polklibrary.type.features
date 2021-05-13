@@ -1,0 +1,37 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="polklibrary.type.features">
+
+
+    <browser:page
+        for="polklibrary.type.features.models.feature.IFeature"
+        name="feature_view"
+        class=".feature_view.FeatureView"
+        permission="zope2.View"
+        />
+
+    <browser:page
+        for="polklibrary.type.features.models.feature.IFeature"
+        name="get_feature"
+        class=".get_feature.GetFeatureView"
+        permission="zope2.View"
+        />
+
+
+  <!-- Set overrides folder for Just-a-Bunch-Of-Templates product -->
+  <include package="z3c.jbot" file="meta.zcml" />
+  <browser:jbot
+      directory="overrides"
+      layer="polklibrary.type.features.interfaces.IPolklibraryTypeFeaturesLayer"
+      />
+
+  <!-- Publish static files -->
+  <plone:static
+      name="polklibrary.type.features"
+      type="plone"
+      directory="static"
+      />
+
+</configure>

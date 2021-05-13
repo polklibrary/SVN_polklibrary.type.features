@@ -1,0 +1,127 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="plone"
+	  lang="en">
+<body>
+
+	<metal:block fill-slot="style_slot">
+        <style>
+            .feature-page { 
+                border-bottom: 1px solid gray;
+                padding-bottom: 20px;
+                margin-top: 20px;
+            }
+            
+        </style>
+	</metal:block>
+    
+	<metal:block fill-slot="javascript_head_slot">
+
+	</metal:block>
+    
+    <metal:content-title fill-slot="content-title" >
+        <h1 class="documentFirstHeading">${context/Title}</h1>
+    </metal:content-title>
+        
+	<metal:content-description fill-slot="content-description">
+        <div class="documentDescription description">${context/Description}</div>
+    </metal:content-description>
+
+	<metal:content fill-slot="content-core">
+        
+        <div id="features-view" class="column">
+        
+            <div class="feature-page feature-one" tal:condition="view/has_feature_one">
+                <h1 class="col-100" tal:content="context/title_one"></h1>
+            
+                <img src="${context/absolute_url}/@@download/image_one/${context/image_one/filename}" alt="Feature Image" />
+                
+                <div class="col-100" tal:content="structure context/body_one/output|nothing">
+                </div>
+            </div>
+            
+            <div class="feature-page feature-two" tal:condition="view/has_feature_two">
+                <h1 class="col-100" tal:content="context/title_two"></h1>
+            
+                <img src="${context/absolute_url}/@@download/image_two/${context/image_two/filename}" alt="Feature Image" />
+                
+                <div class="col-100" tal:content="structure context/body_two/output|nothing">
+                </div>
+            </div>
+            
+            <div class="feature-page feature-three" tal:condition="view/has_feature_three">
+                <h1 class="col-100" tal:content="context/title_three"></h1>
+            
+                <img src="${context/absolute_url}/@@download/image_three/${context/image_three/filename}" alt="Feature Image" />
+                
+                <div class="col-100" tal:content="structure context/body_three/output|nothing">
+                </div>
+            </div>
+            
+            <div class="feature-page feature-four" tal:condition="view/has_feature_four">
+                <h1 class="col-100" tal:content="context/title_four"></h1>
+            
+                <img src="${context/absolute_url}/@@download/image_four/${context/image_four/filename}" alt="Feature Image" />
+                
+                <div class="col-100" tal:content="structure context/body_four/output|nothing">
+                </div>
+            </div>
+            
+            <div class="feature-page feature-five" tal:condition="view/has_feature_five">
+                <h1 class="col-100" tal:content="context/title_five"></h1>
+            
+                <img src="${context/absolute_url}/@@download/image_five/${context/image_five/filename}" alt="Feature Image" />
+                
+                <div class="col-100" tal:content="structure context/body_five/output|nothing">
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <script type="text/javascript">
+        
+            if (document.location.href.indexOf('?one=1') != -1){
+                $('.feature-one').show();
+                $('.feature-two').hide();
+                $('.feature-three').hide();
+                $('.feature-four').hide();
+                $('.feature-five').hide();
+            }
+            if (document.location.href.indexOf('?two=1') != -1){
+                $('.feature-one').hide();
+                $('.feature-two').show();
+                $('.feature-three').hide();
+                $('.feature-four').hide();
+                $('.feature-five').hide();
+            }
+            if (document.location.href.indexOf('?three=1') != -1){
+                $('.feature-one').hide();
+                $('.feature-two').hide();
+                $('.feature-three').show();
+                $('.feature-four').hide();
+                $('.feature-five').hide();
+            }
+            if (document.location.href.indexOf('?four=1') != -1){
+                $('.feature-one').hide();
+                $('.feature-two').hide();
+                $('.feature-three').hide();
+                $('.feature-four').show();
+                $('.feature-five').hide();
+            }
+            if (document.location.href.indexOf('?five=1') != -1){
+                $('.feature-one').hide();
+                $('.feature-two').hide();
+                $('.feature-three').hide();
+                $('.feature-four').hide();
+                $('.feature-five').show();
+            }
+        
+        </script>
+        
+	</metal:content>
+
+</body>
+</html>
