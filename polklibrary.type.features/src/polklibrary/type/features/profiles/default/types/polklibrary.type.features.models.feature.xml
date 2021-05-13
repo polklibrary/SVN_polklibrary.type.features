@@ -2,7 +2,7 @@
 <object name="polklibrary.type.coursepages.models.page" meta_type="Dexterity FTI" i18n:domain="plone"
    xmlns:i18n="http://xml.zope.org/namespaces/i18n">
  <property name="title" i18n:translate="">Feature/Ad</property>
- <property name="description" i18n:translate="">None</property>
+ <property name="description" i18n:translate=""></property>
  <property name="icon_expr">string:${folder_url}/document_icon.png</property>
  <property name="factory">polklibrary.type.features.models.feature</property>
  <property name="add_view_expr">string:${folder_url}/++add++polklibrary.type.features.models.feature</property>

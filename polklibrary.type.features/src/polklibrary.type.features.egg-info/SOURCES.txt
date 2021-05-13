@@ -26,6 +26,9 @@ src/polklibrary/type/features/setuphandlers.py
 src/polklibrary/type/features/testing.py
 src/polklibrary/type/features/browser/__init__.py
 src/polklibrary/type/features/browser/configure.zcml
+src/polklibrary/type/features/browser/feature_view.pt
+src/polklibrary/type/features/browser/feature_view.py
+src/polklibrary/type/features/browser/get_feature.py
 src/polklibrary/type/features/browser/overrides/.gitkeep
 src/polklibrary/type/features/browser/static/.gitkeep
 src/polklibrary/type/features/locales/README.rst
@@ -33,6 +36,7 @@ src/polklibrary/type/features/locales/__init__.py
 src/polklibrary/type/features/locales/polklibrary.type.features.pot
 src/polklibrary/type/features/locales/update.py
 src/polklibrary/type/features/locales/update.sh
+src/polklibrary/type/features/locales/en/LC_MESSAGES/polklibrary.type.features.mo
 src/polklibrary/type/features/locales/en/LC_MESSAGES/polklibrary.type.features.po
 src/polklibrary/type/features/models/__init__.py
 src/polklibrary/type/features/models/configure.zcml

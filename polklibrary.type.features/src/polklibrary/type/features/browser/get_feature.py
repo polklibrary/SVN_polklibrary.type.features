@@ -1,14 +1,28 @@
+from plone.memoize import ram
 from plone import api
 from Products.Five import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-import json
+import json, time, datetime
 
 class GetFeatureView(BrowserView):
 
     
     def __call__(self):
-        data = {}
+        return json.dumps(self.get_cached_data())
         
+    def get_url(self, name):
+        option = getattr(self.context, 'click_options_' + name)
+        if option == u'Feature Page':
+            return self.context.absolute_url() + '?' + name + '=1'
+        if option == u'Use Link':
+            return getattr(self.context, 'link_' + name)
+        return ''
+      
+    @ram.cache(lambda *args: time.time() // (60 * 2))
+    def get_cached_data(self):
+        data = {
+            '__cached': str(datetime.datetime.now()),
+        }
         
         if self.context.title_one and self.context.image_one:
             data['feature-one'] = {
@@ -44,17 +58,8 @@ class GetFeatureView(BrowserView):
                 'image_url': self.context.absolute_url() + '/@@download/image_five/' + self.context.image_five.filename,
                 'url': self.get_url('five'),
             }
-        
-        return json.dumps(data)
-        
-    
-    def get_url(self, name):
-        option = getattr(self.context, 'click_options_' + name)
-        if option == u'Feature Page':
-            return self.context.absolute_url() + '?' + name + '=1'
-        if option == u'Use Link':
-            return getattr(self.context, 'link_' + name)
-        return ''
+            
+        return data
       
     @property
     def portal(self):

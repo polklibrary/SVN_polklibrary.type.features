@@ -13,6 +13,9 @@
                 padding-bottom: 20px;
                 margin-top: 20px;
             }
+            .feature-img { 
+                max-width: 1080px; 
+            }
             
         </style>
 	</metal:block>
@@ -36,7 +39,7 @@
             <div class="feature-page feature-one" tal:condition="view/has_feature_one">
                 <h1 class="col-100" tal:content="context/title_one"></h1>
             
-                <img src="${context/absolute_url}/@@download/image_one/${context/image_one/filename}" alt="Feature Image" />
+                <img class="feature-img" src="${context/absolute_url}/@@download/image_one/${context/image_one/filename}" alt="Feature Image" />
                 
                 <div class="col-100" tal:content="structure context/body_one/output|nothing">
                 </div>
@@ -45,7 +48,7 @@
             <div class="feature-page feature-two" tal:condition="view/has_feature_two">
                 <h1 class="col-100" tal:content="context/title_two"></h1>
             
-                <img src="${context/absolute_url}/@@download/image_two/${context/image_two/filename}" alt="Feature Image" />
+                <img class="feature-img"  src="${context/absolute_url}/@@download/image_two/${context/image_two/filename}" alt="Feature Image" />
                 
                 <div class="col-100" tal:content="structure context/body_two/output|nothing">
                 </div>
@@ -54,7 +57,7 @@
             <div class="feature-page feature-three" tal:condition="view/has_feature_three">
                 <h1 class="col-100" tal:content="context/title_three"></h1>
             
-                <img src="${context/absolute_url}/@@download/image_three/${context/image_three/filename}" alt="Feature Image" />
+                <img class="feature-img"  src="${context/absolute_url}/@@download/image_three/${context/image_three/filename}" alt="Feature Image" />
                 
                 <div class="col-100" tal:content="structure context/body_three/output|nothing">
                 </div>
@@ -63,7 +66,7 @@
             <div class="feature-page feature-four" tal:condition="view/has_feature_four">
                 <h1 class="col-100" tal:content="context/title_four"></h1>
             
-                <img src="${context/absolute_url}/@@download/image_four/${context/image_four/filename}" alt="Feature Image" />
+                <img class="feature-img"  src="${context/absolute_url}/@@download/image_four/${context/image_four/filename}" alt="Feature Image" />
                 
                 <div class="col-100" tal:content="structure context/body_four/output|nothing">
                 </div>
@@ -72,7 +75,7 @@
             <div class="feature-page feature-five" tal:condition="view/has_feature_five">
                 <h1 class="col-100" tal:content="context/title_five"></h1>
             
-                <img src="${context/absolute_url}/@@download/image_five/${context/image_five/filename}" alt="Feature Image" />
+                <img class="feature-img"  src="${context/absolute_url}/@@download/image_five/${context/image_five/filename}" alt="Feature Image" />
                 
                 <div class="col-100" tal:content="structure context/body_five/output|nothing">
                 </div>
