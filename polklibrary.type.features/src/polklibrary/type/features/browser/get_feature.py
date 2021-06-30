@@ -2,13 +2,17 @@ from plone.memoize import ram
 from plone import api
 from Products.Five import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-import json, time, datetime
+import json, time, datetime, hashlib
 
 class GetFeatureView(BrowserView):
 
     
     def __call__(self):
-        return json.dumps(self.get_cached_data())
+        _data = self.get_cached_data()
+        self.request.response.setHeader('Content-Type', 'application/json')
+        self.request.response.setHeader('Access-Control-Allow-Origin', '*')
+        
+        return json.dumps(_data)
         
     def get_url(self, name):
         option = getattr(self.context, 'click_options_' + name)
