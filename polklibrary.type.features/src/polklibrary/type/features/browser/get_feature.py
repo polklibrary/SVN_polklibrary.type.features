@@ -22,6 +22,7 @@ class GetFeatureView(BrowserView):
     def get_cached_data(self):
         data = {
             '__cached': str(datetime.datetime.now()),
+            'rotation_seconds': str(self.context.rotation_speed),
         }
         
         if self.context.title_one and self.context.image_one:
