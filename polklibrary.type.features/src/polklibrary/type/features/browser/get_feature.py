@@ -4,11 +4,15 @@ from Products.Five import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 import json, time, datetime, hashlib
 
+
+def _render_cachekey(method, self, context):
+    return (context.absolute_url(), context.modified())
+
 class GetFeatureView(BrowserView):
 
     
     def __call__(self):
-        _data = self.get_cached_data()
+        _data = self.get_cached_data(self.context)
         self.request.response.setHeader('Content-Type', 'application/json')
         self.request.response.setHeader('Access-Control-Allow-Origin', '*')
         
@@ -21,9 +25,10 @@ class GetFeatureView(BrowserView):
         if option == u'Use Link':
             return getattr(self.context, 'link_' + name)
         return ''
-      
-    @ram.cache(lambda *args: time.time() // (60 * 2))
-    def get_cached_data(self):
+        
+    @ram.cache(_render_cachekey)
+    def get_cached_data(self, context):
+    
         data = {
             '__cached': str(datetime.datetime.now()),
             'rotation_seconds': int(self.context.rotation_speed),
